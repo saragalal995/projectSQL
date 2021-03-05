@@ -55,7 +55,7 @@ namespace projectSQL
         {
             try
             {
-                Oline_Exam1 exam = new Oline_Exam1();
+                Oline_Exam2 exam = new Oline_Exam2();
                 var std = (from s in exam.Students where s.St_id == id & s.Email==email select s).First();
                 StudentDashbord Student = new StudentDashbord(std.St_id);
                 Student.Show();

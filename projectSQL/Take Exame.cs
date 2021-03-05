@@ -31,7 +31,7 @@ namespace projectSQL
 
         private void LoadExam()
         {
-            Oline_Exam1 exams = new Oline_Exam1();
+            Oline_Exam2 exams = new Oline_Exam2();
             var examQuest = exams.getExam_Question(examID);
             list = examQuest.ToList();
             StudentAnswers = new Dictionary<int, string>(list.Count);
@@ -48,7 +48,7 @@ namespace projectSQL
         private void loadQuestion(int index)
         {
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
-            Oline_Exam1 ex = new Oline_Exam1();
+            Oline_Exam2 ex = new Oline_Exam2();
             currentIndex = index;
             ButtonsStates();
             flowLayoutPanel2.Controls.Clear();
@@ -167,5 +167,9 @@ namespace projectSQL
             }
         }
 
+        private void finish_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

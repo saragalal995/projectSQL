@@ -18,7 +18,7 @@ namespace projectSQL
         {
             InitializeComponent();
             this.id = id;
-            Oline_Exam1 exam = new Oline_Exam1();
+            Oline_Exam2 exam = new Oline_Exam2();
             var student = (from s in exam.Students
                            where s.St_id == id
                            select s).First();

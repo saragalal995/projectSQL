@@ -341,6 +341,10 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="ExamRes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="stID" Type="int" Mode="In" />
+          <Parameter Name="Ex_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="Examresults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="stID" Type="int" Mode="In" />
         </Function>
@@ -872,7 +876,7 @@
           <End Role="course" Type="Self.course" Multiplicity="*" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="Oline_Exam1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Oline_Exam2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Choices" EntityType="Self.Choice" />
           <EntitySet Name="courses" EntityType="Self.course" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
@@ -968,6 +972,10 @@
           <FunctionImport Name="ExamCorrection" ReturnType="Collection(Oline_ExamModel.ExamCorrection_Result)">
             <Parameter Name="stID" Mode="In" Type="Int32" />
             <Parameter Name="EXid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ExamRes" ReturnType="Collection(Int32)">
+            <Parameter Name="stID" Mode="In" Type="Int32" />
+            <Parameter Name="Ex_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Examresults" ReturnType="Collection(Oline_ExamModel.Examresults_Result)">
             <Parameter Name="stID" Mode="In" Type="Int32" />
@@ -1191,7 +1199,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Oline_ExamModelStoreContainer" CdmEntityContainer="Oline_Exam1">
+        <EntityContainerMapping StorageEntityContainer="Oline_ExamModelStoreContainer" CdmEntityContainer="Oline_Exam2">
           <EntitySetMapping Name="Choices">
             <EntityTypeMapping TypeName="Oline_ExamModel.Choice">
               <MappingFragment StoreEntitySet="Choice">
@@ -1369,6 +1377,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ExamRes" FunctionName="Oline_ExamModel.Store.ExamRes" />
           <FunctionImportMapping FunctionImportName="Examresults" FunctionName="Oline_ExamModel.Store.Examresults">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Oline_ExamModel.Examresults_Result">

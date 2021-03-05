@@ -202,12 +202,13 @@ namespace projectSQL
             this.finish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.finish.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.finish.ForeColor = System.Drawing.Color.White;
-            this.finish.Location = new System.Drawing.Point(325, 30);
+            this.finish.Location = new System.Drawing.Point(314, 30);
             this.finish.Name = "finish";
             this.finish.Size = new System.Drawing.Size(177, 38);
             this.finish.TabIndex = 5;
             this.finish.Text = "Finish";
             this.finish.UseVisualStyleBackColor = false;
+            this.finish.Click += new System.EventHandler(this.finish_Click);
             // 
             // Take_Exame
             // 
