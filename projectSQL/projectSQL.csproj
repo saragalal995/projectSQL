@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +55,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Choice.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="correctAns_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
     <Compile Include="Course List.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Course List.Designer.cs">
       <DependentUpon>Course List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="course.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
     </Compile>
     <Compile Include="CreateExame.cs">
       <SubType>Form</SubType>
@@ -58,11 +76,44 @@
     <Compile Include="CreateExame.Designer.cs">
       <DependentUpon>CreateExame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Department.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Exam.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExamAnswers_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExamCorrection_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Examcourse_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExamDashborde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExamDashborde.Designer.cs">
+      <DependentUpon>ExamDashborde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Examresults_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="getCoursesByDeptID_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getExam_Question_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Instractor.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
     </Compile>
     <Compile Include="Instractors_home.cs">
       <SubType>Form</SubType>
@@ -130,13 +181,43 @@
     <Compile Include="MangeTopic.Designer.cs">
       <DependentUpon>MangeTopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Oline_Exam.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oline_Exam.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Oline_Exam.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Oline_Exam.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oline_Exam.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
     <Compile Include="StudentDashbord.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StudentDashbord.Designer.cs">
       <DependentUpon>StudentDashbord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="studentExamCourse_Result.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentLogin.cs">
       <SubType>Form</SubType>
@@ -144,11 +225,29 @@
     <Compile Include="StudentLogin.Designer.cs">
       <DependentUpon>StudentLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Student_Exam.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Take Exame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Take Exame.Designer.cs">
+      <DependentUpon>Take Exame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Topic.cs">
+      <DependentUpon>Oline_Exam.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Course List.resx">
       <DependentUpon>Course List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateExame.resx">
       <DependentUpon>CreateExame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExamDashborde.resx">
+      <DependentUpon>ExamDashborde.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -202,6 +301,17 @@
     <EmbeddedResource Include="StudentLogin.resx">
       <DependentUpon>StudentLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Take Exame.resx">
+      <DependentUpon>Take Exame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Oline_Exam.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Oline_Exam.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Oline_Exam.edmx.diagram">
+      <DependentUpon>Oline_Exam.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -256,6 +366,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\undraw_accept_tasks_po1c %282%29 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Oline_Exam.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Oline_Exam.edmx</DependentUpon>
+      <LastGenOutput>Oline_Exam.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Oline_Exam.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Oline_Exam.edmx</DependentUpon>
+      <LastGenOutput>Oline_Exam.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -20,7 +20,7 @@ namespace projectSQL
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            StudentDashbord sd = new StudentDashbord();
+            StudentDashbord sd = new StudentDashbord(0);
             sd.Show();
         }
     }
