@@ -12,9 +12,11 @@ namespace projectSQL
 {
     public partial class Instractors_home : Form
     {
+       
         public Instractors_home()
         {
             InitializeComponent();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -29,6 +31,11 @@ namespace projectSQL
             this.Close();
             LoginInstrctour li = new LoginInstrctour();
             li.Show();
+        }
+
+        private void Instractors_home_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

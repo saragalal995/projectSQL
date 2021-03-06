@@ -201,6 +201,7 @@ namespace projectSQL
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(207, 26);
             this.comboBox2.TabIndex = 7;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -248,6 +249,7 @@ namespace projectSQL
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(207, 26);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -306,6 +308,7 @@ namespace projectSQL
             this.button3.TabIndex = 2;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -321,6 +324,7 @@ namespace projectSQL
             this.button2.TabIndex = 1;
             this.button2.Text = "Update";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -336,6 +340,7 @@ namespace projectSQL
             this.button1.TabIndex = 0;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
@@ -368,6 +373,7 @@ namespace projectSQL
             this.Controls.Add(this.panel2);
             this.Name = "CreateExame";
             this.Text = "CreateExame";
+            this.Load += new System.EventHandler(this.CreateExame_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel4.ResumeLayout(false);

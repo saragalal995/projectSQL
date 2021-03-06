@@ -15,10 +15,10 @@ namespace projectSQL
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Oline_Exam2 : DbContext
+    public partial class Online_Exame : DbContext
     {
-        public Oline_Exam2()
-            : base("name=Oline_Exam2")
+        public Online_Exame()
+            : base("name=Online_Exame")
         {
         }
     
@@ -38,7 +38,7 @@ namespace projectSQL
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
     
-        [DbFunction("Oline_Exam2", "correctAns")]
+        [DbFunction("Online_Exame", "correctAns")]
         public virtual IQueryable<correctAns_Result> correctAns(Nullable<int> st_id, Nullable<int> ex_id)
         {
             var st_idParameter = st_id.HasValue ?
@@ -49,27 +49,27 @@ namespace projectSQL
                 new ObjectParameter("Ex_id", ex_id) :
                 new ObjectParameter("Ex_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<correctAns_Result>("[Oline_Exam2].[correctAns](@st_id, @Ex_id)", st_idParameter, ex_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<correctAns_Result>("[Online_Exame].[correctAns](@st_id, @Ex_id)", st_idParameter, ex_idParameter);
         }
     
-        [DbFunction("Oline_Exam2", "Examcourse")]
+        [DbFunction("Online_Exame", "Examcourse")]
         public virtual IQueryable<Examcourse_Result> Examcourse(Nullable<int> st_id)
         {
             var st_idParameter = st_id.HasValue ?
                 new ObjectParameter("st_id", st_id) :
                 new ObjectParameter("st_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Examcourse_Result>("[Oline_Exam2].[Examcourse](@st_id)", st_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Examcourse_Result>("[Online_Exame].[Examcourse](@st_id)", st_idParameter);
         }
     
-        [DbFunction("Oline_Exam2", "studentExamCourse")]
+        [DbFunction("Online_Exame", "studentExamCourse")]
         public virtual IQueryable<studentExamCourse_Result> studentExamCourse(Nullable<int> st_id)
         {
             var st_idParameter = st_id.HasValue ?
                 new ObjectParameter("st_id", st_id) :
                 new ObjectParameter("st_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<studentExamCourse_Result>("[Oline_Exam2].[studentExamCourse](@st_id)", st_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<studentExamCourse_Result>("[Online_Exame].[studentExamCourse](@st_id)", st_idParameter);
         }
     
         public virtual ObjectResult<string> deleteCourse(Nullable<int> id)
@@ -124,6 +124,19 @@ namespace projectSQL
                 new ObjectParameter("St_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("deleteStudent", st_idParameter);
+        }
+    
+        public virtual ObjectResult<string> deleteStudentExam(Nullable<int> sid, Nullable<int> exid)
+        {
+            var sidParameter = sid.HasValue ?
+                new ObjectParameter("Sid", sid) :
+                new ObjectParameter("Sid", typeof(int));
+    
+            var exidParameter = exid.HasValue ?
+                new ObjectParameter("exid", exid) :
+                new ObjectParameter("exid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("deleteStudentExam", sidParameter, exidParameter);
         }
     
         public virtual ObjectResult<string> deleteTopic(Nullable<int> id)
@@ -230,6 +243,15 @@ namespace projectSQL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getAllstudents", dept_idParameter);
         }
     
+        public virtual ObjectResult<GetcourseInstructor_Result> GetcourseInstructor(Nullable<int> cid)
+        {
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetcourseInstructor_Result>("GetcourseInstructor", cidParameter);
+        }
+    
         public virtual ObjectResult<string> getCourses_Student(Nullable<int> ins_id)
         {
             var ins_idParameter = ins_id.HasValue ?
@@ -277,6 +299,15 @@ namespace projectSQL
                 new ObjectParameter("St_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getExam_Question_Answer", ex_idParameter, st_idParameter);
+        }
+    
+        public virtual ObjectResult<getInsCourses_Result> getInsCourses(Nullable<int> insID)
+        {
+            var insIDParameter = insID.HasValue ?
+                new ObjectParameter("insID", insID) :
+                new ObjectParameter("insID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getInsCourses_Result>("getInsCourses", insIDParameter);
         }
     
         public virtual int InsertNewCourse(string cname)
@@ -389,7 +420,7 @@ namespace projectSQL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("NewInstructor", fnameParameter, lnameParameter, didParameter);
         }
     
-        public virtual int Newquestion(Nullable<int> correct, string type, string grade, string ques)
+        public virtual ObjectResult<Newquestion_Result> Newquestion(Nullable<int> correct, string type, Nullable<int> grade, string ques, Nullable<int> crs_id)
         {
             var correctParameter = correct.HasValue ?
                 new ObjectParameter("correct", correct) :
@@ -399,18 +430,22 @@ namespace projectSQL
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
     
-            var gradeParameter = grade != null ?
+            var gradeParameter = grade.HasValue ?
                 new ObjectParameter("grade", grade) :
-                new ObjectParameter("grade", typeof(string));
+                new ObjectParameter("grade", typeof(int));
     
             var quesParameter = ques != null ?
                 new ObjectParameter("ques", ques) :
                 new ObjectParameter("ques", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Newquestion", correctParameter, typeParameter, gradeParameter, quesParameter);
+            var crs_idParameter = crs_id.HasValue ?
+                new ObjectParameter("crs_id", crs_id) :
+                new ObjectParameter("crs_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Newquestion_Result>("Newquestion", correctParameter, typeParameter, gradeParameter, quesParameter, crs_idParameter);
         }
     
-        public virtual ObjectResult<string> NewStudentExam(Nullable<int> sid, Nullable<int> qid, Nullable<int> exid, string res, string stAns)
+        public virtual ObjectResult<string> NewStudentExam(Nullable<int> sid, Nullable<int> qid, Nullable<int> exid, Nullable<int> res, string stAns)
         {
             var sidParameter = sid.HasValue ?
                 new ObjectParameter("Sid", sid) :
@@ -424,9 +459,9 @@ namespace projectSQL
                 new ObjectParameter("exid", exid) :
                 new ObjectParameter("exid", typeof(int));
     
-            var resParameter = res != null ?
+            var resParameter = res.HasValue ?
                 new ObjectParameter("res", res) :
-                new ObjectParameter("res", typeof(string));
+                new ObjectParameter("res", typeof(int));
     
             var stAnsParameter = stAns != null ?
                 new ObjectParameter("stAns", stAns) :

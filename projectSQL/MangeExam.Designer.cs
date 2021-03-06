@@ -120,6 +120,7 @@ namespace projectSQL
             this.DoubleBuffered = true;
             this.Name = "MangeExam";
             this.Text = "MangeExam";
+            this.Load += new System.EventHandler(this.MangeExam_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

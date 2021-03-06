@@ -20,8 +20,13 @@ namespace projectSQL
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
-            InstructorOperation io = new InstructorOperation();
+            InstructorOperation io = new InstructorOperation(1);
             io.Show();
+        }
+
+        private void MangeStudents_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

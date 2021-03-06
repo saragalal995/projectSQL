@@ -144,6 +144,7 @@ namespace projectSQL
             this.Controls.Add(this.panel1);
             this.Name = "Instractors_home";
             this.Text = "Instractors_home";
+            this.Load += new System.EventHandler(this.Instractors_home_Load);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();

@@ -329,6 +329,7 @@ namespace projectSQL
             this.Controls.Add(this.panel1);
             this.Name = "StudentDashbord";
             this.Text = "StudentDashbord";
+            this.Load += new System.EventHandler(this.StudentDashbord_Load);
             this.panel1.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();

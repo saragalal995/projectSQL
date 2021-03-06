@@ -56,10 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Choice.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="correctAns_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="Course List.cs">
       <SubType>Form</SubType>
@@ -68,7 +68,7 @@
       <DependentUpon>Course List.cs</DependentUpon>
     </Compile>
     <Compile Include="course.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="CreateExame.cs">
       <SubType>Form</SubType>
@@ -77,19 +77,19 @@
       <DependentUpon>CreateExame.cs</DependentUpon>
     </Compile>
     <Compile Include="Department.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="Exam.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="ExamAnswers_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="ExamCorrection_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="Examcourse_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="ExamDashborde.cs">
       <SubType>Form</SubType>
@@ -98,7 +98,7 @@
       <DependentUpon>ExamDashborde.cs</DependentUpon>
     </Compile>
     <Compile Include="Examresults_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -106,14 +106,20 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetcourseInstructor_Result.cs">
+      <DependentUpon>Online_Exame.tt</DependentUpon>
+    </Compile>
     <Compile Include="getCoursesByDeptID_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="getExam_Question_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getInsCourses_Result.cs">
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="Instractor.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="Instractors_home.cs">
       <SubType>Form</SubType>
@@ -181,34 +187,37 @@
     <Compile Include="MangeTopic.Designer.cs">
       <DependentUpon>MangeTopic.cs</DependentUpon>
     </Compile>
-    <Compile Include="Oline_Exam1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Oline_Exam1.Context.tt</DependentUpon>
+    <Compile Include="Newquestion_Result.cs">
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Oline_Exam1.cs">
+    <Compile Include="Online_Exame.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Oline_Exam1.Designer.cs">
+    <Compile Include="Online_Exame.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Oline_Exam1.edmx</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Online_Exame.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Online_Exame.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="Student.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentDashbord.cs">
       <SubType>Form</SubType>
@@ -217,7 +226,7 @@
       <DependentUpon>StudentDashbord.cs</DependentUpon>
     </Compile>
     <Compile Include="studentExamCourse_Result.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentLogin.cs">
       <SubType>Form</SubType>
@@ -226,10 +235,10 @@
       <DependentUpon>StudentLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Student_Exam.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <Compile Include="Take Exame.cs">
       <SubType>Form</SubType>
@@ -238,7 +247,7 @@
       <DependentUpon>Take Exame.cs</DependentUpon>
     </Compile>
     <Compile Include="Topic.cs">
-      <DependentUpon>Oline_Exam1.tt</DependentUpon>
+      <DependentUpon>Online_Exame.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Course List.resx">
       <DependentUpon>Course List.cs</DependentUpon>
@@ -304,12 +313,12 @@
     <EmbeddedResource Include="Take Exame.resx">
       <DependentUpon>Take Exame.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Oline_Exam1.edmx">
+    <EntityDeploy Include="Online_Exame.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Oline_Exam1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Online_Exame.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Oline_Exam1.edmx.diagram">
-      <DependentUpon>Oline_Exam1.edmx</DependentUpon>
+    <None Include="Online_Exame.edmx.diagram">
+      <DependentUpon>Online_Exame.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -371,15 +380,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Oline_Exam1.Context.tt">
+    <Content Include="Online_Exame.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Oline_Exam1.edmx</DependentUpon>
-      <LastGenOutput>Oline_Exam1.Context.cs</LastGenOutput>
+      <DependentUpon>Online_Exame.edmx</DependentUpon>
+      <LastGenOutput>Online_Exame.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Oline_Exam1.tt">
+    <Content Include="Online_Exame.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Oline_Exam1.edmx</DependentUpon>
-      <LastGenOutput>Oline_Exam1.cs</LastGenOutput>
+      <DependentUpon>Online_Exame.edmx</DependentUpon>
+      <LastGenOutput>Online_Exame.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

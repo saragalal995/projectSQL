@@ -29,7 +29,7 @@ namespace projectSQL
 
         private void LoadCourses()
         {
-            Oline_Exam2 exam = new Oline_Exam2();
+            Online_Exame exam = new Online_Exame();
             var std = (from s in exam.Students where s.St_id == stdID select s).First();
             var course = exam.getCoursesByDeptID(std.Dept_id).ToList();
            
@@ -56,7 +56,7 @@ namespace projectSQL
 
         private void loadEaxam(int cId)
         {
-            Oline_Exam2 exam = new Oline_Exam2();
+            Online_Exame exam = new Online_Exame();
            
             var course = from c in exam.courses where c.C_id == cId select c;
 

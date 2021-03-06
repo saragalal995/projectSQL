@@ -319,6 +319,10 @@
         <Function Name="deleteStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="St_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="deleteStudentExam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Sid" Type="int" Mode="In" />
+          <Parameter Name="exid" Type="int" Mode="In" />
+        </Function>
         <Function Name="deleteTopic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -364,6 +368,9 @@
         <Function Name="getAllstudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Dept_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetcourseInstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cid" Type="int" Mode="In" />
+        </Function>
         <Function Name="getCourses_Student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Ins_id" Type="int" Mode="In" />
         </Function>
@@ -379,6 +386,9 @@
         <Function Name="getExam_Question_Answer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Ex_id" Type="int" Mode="In" />
           <Parameter Name="St_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getInsCourses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="insID" Type="int" Mode="In" />
         </Function>
         <Function Name="InsertNewCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cname" Type="varchar" Mode="In" />
@@ -415,14 +425,15 @@
         <Function Name="Newquestion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="correct" Type="int" Mode="In" />
           <Parameter Name="type" Type="varchar" Mode="In" />
-          <Parameter Name="grade" Type="varchar" Mode="In" />
+          <Parameter Name="grade" Type="int" Mode="In" />
           <Parameter Name="ques" Type="varchar" Mode="In" />
+          <Parameter Name="crs_id" Type="int" Mode="In" />
         </Function>
         <Function Name="NewStudentExam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Sid" Type="int" Mode="In" />
           <Parameter Name="Qid" Type="int" Mode="In" />
           <Parameter Name="exid" Type="int" Mode="In" />
-          <Parameter Name="res" Type="varchar" Mode="In" />
+          <Parameter Name="res" Type="int" Mode="In" />
           <Parameter Name="stAns" Type="varchar" Mode="In" />
         </Function>
         <Function Name="NewTopic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -876,7 +887,7 @@
           <End Role="course" Type="Self.course" Multiplicity="*" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="Oline_Exam2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Online_Exame" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Choices" EntityType="Self.Choice" />
           <EntitySet Name="courses" EntityType="Self.course" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
@@ -963,6 +974,10 @@
           <FunctionImport Name="deleteStudent" ReturnType="Collection(String)">
             <Parameter Name="St_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="deleteStudentExam" ReturnType="Collection(String)">
+            <Parameter Name="Sid" Mode="In" Type="Int32" />
+            <Parameter Name="exid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="deleteTopic" ReturnType="Collection(String)">
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -995,6 +1010,9 @@
           <FunctionImport Name="getAllstudents" ReturnType="Collection(String)">
             <Parameter Name="Dept_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetcourseInstructor" ReturnType="Collection(Oline_ExamModel.GetcourseInstructor_Result)">
+            <Parameter Name="cid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="getCourses_Student" ReturnType="Collection(String)">
             <Parameter Name="Ins_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1010,6 +1028,9 @@
           <FunctionImport Name="getExam_Question_Answer" ReturnType="Collection(String)">
             <Parameter Name="Ex_id" Mode="In" Type="Int32" />
             <Parameter Name="St_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getInsCourses" ReturnType="Collection(Oline_ExamModel.getInsCourses_Result)">
+            <Parameter Name="insID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="InsertNewCourse">
             <Parameter Name="cname" Mode="In" Type="String" />
@@ -1043,17 +1064,18 @@
             <Parameter Name="lname" Mode="In" Type="String" />
             <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Newquestion">
+          <FunctionImport Name="Newquestion" ReturnType="Collection(Oline_ExamModel.Newquestion_Result)">
             <Parameter Name="correct" Mode="In" Type="Int32" />
             <Parameter Name="type" Mode="In" Type="String" />
-            <Parameter Name="grade" Mode="In" Type="String" />
+            <Parameter Name="grade" Mode="In" Type="Int32" />
             <Parameter Name="ques" Mode="In" Type="String" />
+            <Parameter Name="crs_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="NewStudentExam" ReturnType="Collection(String)">
             <Parameter Name="Sid" Mode="In" Type="Int32" />
             <Parameter Name="Qid" Mode="In" Type="Int32" />
             <Parameter Name="exid" Mode="In" Type="Int32" />
-            <Parameter Name="res" Mode="In" Type="String" />
+            <Parameter Name="res" Mode="In" Type="Int32" />
             <Parameter Name="stAns" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NewTopic" ReturnType="Collection(String)">
@@ -1169,10 +1191,15 @@
           <Property Type="Int32" Name="Result" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Examresults_Result">
-          <Property Type="String" Name="St_Name" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Ex_id" Nullable="true" />
+          <Property Type="String" Name="Student_Full_Name" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="Ex_Des" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
           <Property Type="String" Name="C_name" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Result" Nullable="true" />
+          <Property Type="Int32" Name="Grade" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetcourseInstructor_Result">
+          <Property Type="Int32" Name="Ins_id" Nullable="false" />
+          <Property Type="String" Name="Ins_fname" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="getCoursesByDeptID_Result">
           <Property Type="Int32" Name="C_id" Nullable="false" />
@@ -1182,6 +1209,20 @@
         <ComplexType Name="getExam_Question_Result">
           <Property Type="Int32" Name="Quest_Id" Nullable="false" />
           <Property Type="String" Name="Qustion" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="getInsCourses_Result">
+          <Property Type="Int32" Name="C_id" Nullable="false" />
+          <Property Type="String" Name="C_name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Ins_id" Nullable="false" />
+          <Property Type="String" Name="Ins_fname" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Newquestion_Result">
+          <Property Type="Int32" Name="Quest_id" Nullable="false" />
+          <Property Type="Int32" Name="CorectAnswer" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Grade" Nullable="true" />
+          <Property Type="String" Name="Qustion" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="Crs_id" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1199,7 +1240,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Oline_ExamModelStoreContainer" CdmEntityContainer="Oline_Exam2">
+        <EntityContainerMapping StorageEntityContainer="Oline_ExamModelStoreContainer" CdmEntityContainer="Online_Exame">
           <EntitySetMapping Name="Choices">
             <EntityTypeMapping TypeName="Oline_ExamModel.Choice">
               <MappingFragment StoreEntitySet="Choice">
@@ -1355,6 +1396,7 @@
           <FunctionImportMapping FunctionImportName="deleteInstructor" FunctionName="Oline_ExamModel.Store.deleteInstructor" />
           <FunctionImportMapping FunctionImportName="deleteQuestion" FunctionName="Oline_ExamModel.Store.deleteQuestion" />
           <FunctionImportMapping FunctionImportName="deleteStudent" FunctionName="Oline_ExamModel.Store.deleteStudent" />
+          <FunctionImportMapping FunctionImportName="deleteStudentExam" FunctionName="Oline_ExamModel.Store.deleteStudentExam" />
           <FunctionImportMapping FunctionImportName="deleteTopic" FunctionName="Oline_ExamModel.Store.deleteTopic" />
           <FunctionImportMapping FunctionImportName="ExamAnswers" FunctionName="Oline_ExamModel.Store.ExamAnswers">
             <ResultMapping>
@@ -1381,16 +1423,25 @@
           <FunctionImportMapping FunctionImportName="Examresults" FunctionName="Oline_ExamModel.Store.Examresults">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Oline_ExamModel.Examresults_Result">
-                <ScalarProperty Name="St_Name" ColumnName="St_Name" />
-                <ScalarProperty Name="Ex_id" ColumnName="Ex_id" />
+                <ScalarProperty Name="Student_Full_Name" ColumnName="Student Full Name" />
+                <ScalarProperty Name="Ex_Des" ColumnName="Ex_Des" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="C_name" ColumnName="C_name" />
-                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GenerateExam" FunctionName="Oline_ExamModel.Store.GenerateExam" />
           <FunctionImportMapping FunctionImportName="get_AllGrades_student" FunctionName="Oline_ExamModel.Store.get_AllGrades_student" />
           <FunctionImportMapping FunctionImportName="getAllstudents" FunctionName="Oline_ExamModel.Store.getAllstudents" />
+          <FunctionImportMapping FunctionImportName="GetcourseInstructor" FunctionName="Oline_ExamModel.Store.GetcourseInstructor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Oline_ExamModel.GetcourseInstructor_Result">
+                <ScalarProperty Name="Ins_id" ColumnName="Ins_id" />
+                <ScalarProperty Name="Ins_fname" ColumnName="Ins_fname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="getCourses_Student" FunctionName="Oline_ExamModel.Store.getCourses_Student" />
           <FunctionImportMapping FunctionImportName="getCourses_TOpic" FunctionName="Oline_ExamModel.Store.getCourses_TOpic" />
           <FunctionImportMapping FunctionImportName="getCoursesByDeptID" FunctionName="Oline_ExamModel.Store.getCoursesByDeptID">
@@ -1411,13 +1462,34 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="getExam_Question_Answer" FunctionName="Oline_ExamModel.Store.getExam_Question_Answer" />
+          <FunctionImportMapping FunctionImportName="getInsCourses" FunctionName="Oline_ExamModel.Store.getInsCourses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Oline_ExamModel.getInsCourses_Result">
+                <ScalarProperty Name="C_id" ColumnName="C_id" />
+                <ScalarProperty Name="C_name" ColumnName="C_name" />
+                <ScalarProperty Name="Ins_id" ColumnName="Ins_id" />
+                <ScalarProperty Name="Ins_fname" ColumnName="Ins_fname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertNewCourse" FunctionName="Oline_ExamModel.Store.InsertNewCourse" />
           <FunctionImportMapping FunctionImportName="InsertNewDepartement" FunctionName="Oline_ExamModel.Store.InsertNewDepartement" />
           <FunctionImportMapping FunctionImportName="insertNewStudent" FunctionName="Oline_ExamModel.Store.insertNewStudent" />
           <FunctionImportMapping FunctionImportName="NewChoice" FunctionName="Oline_ExamModel.Store.NewChoice" />
           <FunctionImportMapping FunctionImportName="NewExam" FunctionName="Oline_ExamModel.Store.NewExam" />
           <FunctionImportMapping FunctionImportName="NewInstructor" FunctionName="Oline_ExamModel.Store.NewInstructor" />
-          <FunctionImportMapping FunctionImportName="Newquestion" FunctionName="Oline_ExamModel.Store.Newquestion" />
+          <FunctionImportMapping FunctionImportName="Newquestion" FunctionName="Oline_ExamModel.Store.Newquestion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Oline_ExamModel.Newquestion_Result">
+                <ScalarProperty Name="Quest_id" ColumnName="Quest_id" />
+                <ScalarProperty Name="CorectAnswer" ColumnName="CorectAnswer" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Qustion" ColumnName="Qustion" />
+                <ScalarProperty Name="Crs_id" ColumnName="Crs_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="NewStudentExam" FunctionName="Oline_ExamModel.Store.NewStudentExam" />
           <FunctionImportMapping FunctionImportName="NewTopic" FunctionName="Oline_ExamModel.Store.NewTopic" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Oline_ExamModel.Store.sp_alterdiagram" />

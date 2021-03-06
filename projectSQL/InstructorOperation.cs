@@ -12,9 +12,18 @@ namespace projectSQL
 {
     public partial class InstructorOperation : Form
     {
-        public InstructorOperation()
+        private int inst;
+        public InstructorOperation(int id)
         {
             InitializeComponent();
+            this.inst = id;
+            Online_Exame exam = new Online_Exame();
+            var student = (from s in exam.Instractors
+                           where s.Ins_id == id
+                           select s).First();
+            label2.Text = student.Ins_id.ToString();
+            label4.Text = student.Ins_fname + ' ' + student.Ins_lname;
+            label5.Text = student.Dept_id.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,8 +43,13 @@ namespace projectSQL
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-            MangeExam Me = new MangeExam();
+            MangeExam Me = new MangeExam(inst);
             Me.Show();
+        }
+
+        private void InstructorOperation_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -11,12 +11,11 @@ namespace projectSQL
 {
     using System;
     
-    public partial class Examresults_Result
+    public partial class getInsCourses_Result
     {
-        public string Student_Full_Name { get; set; }
-        public string Ex_Des { get; set; }
-        public Nullable<int> Duration { get; set; }
+        public int C_id { get; set; }
         public string C_name { get; set; }
-        public Nullable<int> Grade { get; set; }
+        public int Ins_id { get; set; }
+        public string Ins_fname { get; set; }
     }
 }

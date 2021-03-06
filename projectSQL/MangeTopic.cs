@@ -21,7 +21,7 @@ namespace projectSQL
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
-            InstructorOperation instructor = new InstructorOperation();
+            InstructorOperation instructor = new InstructorOperation(1);
             instructor.Show();
         }
     }

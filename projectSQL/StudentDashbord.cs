@@ -18,7 +18,7 @@ namespace projectSQL
         {
             InitializeComponent();
             this.id = id;
-            Oline_Exam2 exam = new Oline_Exam2();
+            Online_Exame exam = new Online_Exame();
             var student = (from s in exam.Students
                            where s.St_id == id
                            select s).First();
@@ -40,7 +40,7 @@ namespace projectSQL
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            Course_List crs = new Course_List();
+            Course_List crs = new Course_List(id);
             crs.Show();
         }
 
@@ -49,6 +49,11 @@ namespace projectSQL
             this.Close();
             ExamDashborde ed = new ExamDashborde(id);
             ed.Show();
+        }
+
+        private void StudentDashbord_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,22 +12,24 @@ namespace projectSQL
 {
     public partial class MangeExam : Form
     {
-        public MangeExam()
+        private int instID;
+        public MangeExam(int idInstrc)
         {
             InitializeComponent();
+            this.instID = idInstrc;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
-            InstructorOperation ist = new InstructorOperation();
+            InstructorOperation ist = new InstructorOperation(1);
             ist.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            CreateExame ce = new CreateExame();
+            CreateExame ce = new CreateExame(instID);
             ce.Show();
 
         }
@@ -35,8 +37,13 @@ namespace projectSQL
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-            MangeCourseQuestions Mcq = new MangeCourseQuestions();
+            MangeCourseQuestions Mcq = new MangeCourseQuestions(instID);
             Mcq.Show();
+
+        }
+
+        private void MangeExam_Load(object sender, EventArgs e)
+        {
 
         }
     }

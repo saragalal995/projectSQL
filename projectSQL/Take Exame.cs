@@ -31,7 +31,7 @@ namespace projectSQL
 
         private void LoadExam()
         {
-            Oline_Exam2 exams = new Oline_Exam2();
+            Online_Exame exams = new Online_Exame();
             var examQuest = exams.getExam_Question(examID);
             list = examQuest.ToList();
             StudentAnswers = new Dictionary<int, string>(list.Count);
@@ -48,7 +48,7 @@ namespace projectSQL
         private void loadQuestion(int index)
         {
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
-            Oline_Exam2 ex = new Oline_Exam2();
+            Online_Exame ex = new Online_Exame();
             currentIndex = index;
             ButtonsStates();
             flowLayoutPanel2.Controls.Clear();
@@ -169,7 +169,46 @@ namespace projectSQL
 
         private void finish_Click(object sender, EventArgs e)
         {
-            
+
+            Online_Exame ex = new Online_Exame();
+            IfStdExameExestBefor();
+            foreach (var item in StudentAnswers)
+            {
+                //var msg = ex.NewStudentExam(studentID, item.Key, examID, 0, item.Value);
+                Student_Exam se = new Student_Exam()
+                {
+                    St_id = studentID,
+                    Ex_id = examID,
+                    Q_id = item.Key,
+                    Result = 0,
+                    St_answer = item.Value
+                };
+                ex.Student_Exam.Add(se);
+    
+                ex.SaveChanges();
+            }
+            ex.ExamCorrection(studentID, examID);
+           var res= ex.ExamRes(studentID, examID).First();
+            MessageBox.Show($"your grade {res}");
+            StudentDashbord std = new StudentDashbord(studentID);
+            this.Close();
+            std.Show();
+        }
+
+        private void IfStdExameExestBefor()
+        {
+            try
+            {
+                Online_Exame ex = new Online_Exame();
+              var msg= ex.deleteStudentExam(studentID, examID);
+                ex.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
         }
     }
 }
