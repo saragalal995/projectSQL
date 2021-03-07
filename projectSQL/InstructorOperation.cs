@@ -29,14 +29,14 @@ namespace projectSQL
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            MangeStudents ms = new MangeStudents();
+            MangeStudents ms = new MangeStudents(inst);
             ms.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
-            MangeTopic mt = new MangeTopic();
+            MangeTopic mt = new MangeTopic(inst);
             mt.Show();
         }
 

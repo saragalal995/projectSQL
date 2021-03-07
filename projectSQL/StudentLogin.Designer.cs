@@ -87,7 +87,7 @@ namespace projectSQL
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(187)))), ((int)(((byte)(77)))));
             this.label2.Location = new System.Drawing.Point(29, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.Size = new System.Drawing.Size(88, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Student ID";
             // 
@@ -98,16 +98,16 @@ namespace projectSQL
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(187)))), ((int)(((byte)(77)))));
             this.label1.Location = new System.Drawing.Point(20, 135);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 20);
+            this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Student Name";
+            this.label1.Text = "Student Email";
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(148, 131);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(231, 24);
+            this.textBox2.Size = new System.Drawing.Size(231, 25);
             this.textBox2.TabIndex = 1;
             // 
             // textBox1
@@ -116,7 +116,7 @@ namespace projectSQL
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(148, 94);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 24);
+            this.textBox1.Size = new System.Drawing.Size(231, 25);
             this.textBox1.TabIndex = 0;
             // 
             // StudentLogin
